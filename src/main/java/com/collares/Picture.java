@@ -14,7 +14,7 @@ public class Picture {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     private String nameArtist;
-    private String price;
+    private double price;
     private Date date;
     
     
@@ -30,10 +30,10 @@ public class Picture {
 	public void setNameArtist(String nameArtist) {
 		this.nameArtist = nameArtist;
 	}
-	public String getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	public Date getDate() {
@@ -42,6 +42,7 @@ public class Picture {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+    
     
     
 

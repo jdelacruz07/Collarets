@@ -14,7 +14,7 @@ public class Shop {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     private String nameShop;
-    private double quantity;
+    private int quantity;
     
     
 	public Integer getId() {
@@ -29,12 +29,15 @@ public class Shop {
 	public void setNameShop(String nameShop) {
 		this.nameShop = nameShop;
 	}
-	public double getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(double quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+    
+    
+	
 
     
 	
