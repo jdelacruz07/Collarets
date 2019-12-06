@@ -1,10 +1,6 @@
-package com.collares;
-
-import java.sql.Date;
+package com.collares.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,70 +8,61 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.collares.repository.PictureRepository;
-import com.collares.repository.ShopRepository;
+import com.collares.domain.Picture;
+import com.collares.domain.Shop;
+import com.collares.service.PictureService;
+import com.collares.service.ShopService;
 
 @Controller
 @RequestMapping(path = "/shops")
 public class MainController {
+	private ShopService shopService;
+	private PictureService pictureService;
 
 	@Autowired
-	private ShopRepository shopRepository;
-	@Autowired
-	private PictureRepository pictureRepository;
-
-	public MainController(ShopRepository shopRepository, PictureRepository pictureRepository) {
+	public MainController(ShopService shopService, PictureService pictureService) {
 		super();
-		this.shopRepository = shopRepository;
-		this.pictureRepository = pictureRepository;
+		this.shopService = shopService;
+		this.pictureService = pictureService;
 	}
 
 	@PostMapping
 	@ResponseBody
 	public void createShop(@RequestBody Shop shopNew) {
-
-		Shop shop = new Shop();
-		shop.setNameShop(shopNew.getNameShop());
-		shop.setQuantity(shopNew.getQuantity());
-		shopRepository.save(shop);
+		shopService.addShop(shopNew);
 	}
 
 	@GetMapping
 	@ResponseBody
 	public Iterable<Shop> getAllShops() {
-		return shopRepository.findAll();
+		return shopService.getAllShop();
 	}
 
 	@PostMapping(path = "/pictures")
 	@ResponseBody
 	public void createPicture(@RequestBody Picture pictureNew) {
-
-		Picture picture = new Picture();
-		picture.setNameArtist(pictureNew.getNameArtist());
-		picture.setNamePicture(pictureNew.getNamePicture());
-		pictureRepository.save(picture);
+		pictureService.addPicture(pictureNew);
 	}
 
 	@GetMapping(path = "/pictures")
 	@ResponseBody
 	public Iterable<Picture> getAllPictures() {
 
-		return pictureRepository.findAll();
+		return pictureService.getAllPicture();
 	}
 
 	@DeleteMapping(path = "/pictures")
 	@ResponseBody
-	public void deletePictures() {
-		pictureRepository.deleteAll();
+	public void deleteAllPictures() {
+		pictureService.deleteAllPicture();
 	}
 
 	@DeleteMapping(path = "/{id}/pictures")
 	@ResponseBody
 	public void deletePictures(@PathVariable("id") int id) {
-		pictureRepository.deleteById(id);
+		pictureService.deleteById(id);
 	}
 
 }

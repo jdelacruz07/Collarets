@@ -1,4 +1,4 @@
-package com.collares;
+package com.collares.domain;
 
 import java.util.Date;
 
