@@ -2,6 +2,8 @@ package com.collares.repository;
 
 import static org.junit.Assert.assertNotNull;
 
+import javax.transaction.Transactional;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +29,11 @@ public class PictureRepositoryTest {
 	@Test
 	public void testFindByNamePicture() {
 		Picture picture = new Picture();
-		picture.setNamePicture("Sol");
+		picture.setNamePicture("Moon");
 
 		entityManager.persistAndFlush(picture);
 
-		Picture foundPicture = pictureRepository.findByNamePicture("Sol");
+		Picture foundPicture = pictureRepository.findByNamePicture("Moon");
 		assertNotNull(foundPicture.getNamePicture());
 	}
 }

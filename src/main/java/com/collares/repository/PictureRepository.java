@@ -6,5 +6,5 @@ import com.collares.domain.Picture;
 
 public interface PictureRepository extends CrudRepository<Picture, Integer> {
 
-	public Picture findByNamePicture(String NamePicture);
+	public Picture findByNamePicture(String name);
 }
