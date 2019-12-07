@@ -9,7 +9,6 @@ import javax.persistence.Id;
 
 @Entity
 public class Picture {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
@@ -56,6 +55,12 @@ public class Picture {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	@Override
+	public String toString() {
+		return "Picture [id=" + id + ", namePicture=" + namePicture + ", nameArtist=" + nameArtist + ", price=" + price
+				+ ", date=" + date + "]";
 	}
 
 }

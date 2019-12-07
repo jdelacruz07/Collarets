@@ -8,15 +8,13 @@ import com.collares.repository.PictureRepository;
 
 @Service
 public class PictureService {
-	
+
 	@Autowired
 	private PictureRepository pictureRepository;
 
-	public void addPicture(Picture pictureNew) {
-		Picture picture = new Picture();
-		picture.setNameArtist(pictureNew.getNameArtist());
-		picture.setNamePicture(pictureNew.getNamePicture());
-		pictureRepository.save(picture);
+	public Picture addPicture(Picture pictureNew) {
+		Picture newPicture = pictureRepository.save(pictureNew);
+		return newPicture;
 	}
 
 	public Iterable<Picture> getAllPicture() {

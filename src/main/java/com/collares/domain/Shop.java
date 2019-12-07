@@ -1,7 +1,5 @@
 package com.collares.domain;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,6 +36,11 @@ public class Shop {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+
+	@Override
+	public String toString() {
+		return "Shop [id=" + id + ", nameShop=" + nameShop + ", quantity=" + quantity + "]";
 	}
 
 }
